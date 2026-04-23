@@ -2,7 +2,6 @@
 
 A fast and reliable TikTok video downloader API that fetches TikTok videos without watermarks. Built with modern web technologies and deployed on Vercel.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/devlopersujoy/tiktok-downloader-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![API Status](https://img.shields.io/badge/API-Online-success)](https://tiktok-downbloder.vercel.app)
 
