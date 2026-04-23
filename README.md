@@ -1,6 +1,6 @@
 # 🎵 TikTok Downloader API
 
-A fast and reliable TikTok video downloader API that fetches TikTok videos without watermarks. Built with modern web technologies and deployed on Vercel.
+A fast and reliable TikTok video downloader API that fetches TikTok videos without watermarks.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![API Status](https://img.shields.io/badge/API-Online-success)](https://tiktok-downbloder.vercel.app)
@@ -19,7 +19,7 @@ A fast and reliable TikTok video downloader API that fetches TikTok videos witho
 ## 📡 API Endpoint
 
 ```
-GET https://tiktok-downbloder.vercel.app/?url={TIKTOK_URL}
+GET https://tiktok-downbloder.vercel.app/?url={TIKTOK_VIDEO_URL}
 ```
 
 ### Parameters
@@ -135,36 +135,6 @@ if ($data['success']) {
 | `result.raw.result.author.avatar`  | string  | Creator's profile picture URL         |
 | `result.raw.result.statistics`     | object  | Video engagement stats                |
 
-## ⚙️ Installation (Self-Hosted)
-
-### Prerequisites
-
-- Node.js 18+ or compatible runtime
-- Vercel CLI (optional, for deployment)
-
-### Clone Repository
-
-```bash
-git clone https://github.com/devlopersujoy/tiktok-downloader-api.git
-cd tiktok-downloader-api
-npm install
-```
-
-### Local Development
-
-```bash
-npm run dev
-# API will be available at http://localhost:3000
-```
-
-### Deploy to Vercel
-
-```bash
-vercel --prod
-```
-
-Or use the one-click deploy button at the top of this README.
-
 ## 🛠️ Tech Stack
 
 - **Runtime:** Node.js / Vercel Serverless Functions
@@ -189,19 +159,9 @@ This API does not currently enforce rate limits, but please use responsibly:
 - Avoid automated scraping of large video batches
 - Cache responses when possible
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License 
 
 ## 👨‍💻 Developer
 
@@ -218,10 +178,6 @@ This tool is for educational purposes only. Please respect TikTok's Terms of Ser
 - Respect content creators' intellectual property
 - Do not use for commercial purposes without proper authorization
 - TikTok® is a registered trademark of ByteDance Ltd.
-
-## 🐛 Issues & Support
-
-Found a bug or have a suggestion? Please [open an issue](https://github.com/devlopersujoy/tiktok-downloader-api/issues) on GitHub.
 
 ## 🌟 Show Your Support
 
