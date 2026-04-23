@@ -26,7 +26,7 @@ GET https://tiktok-downbloder.vercel.app/?url={TIKTOK_VIDEO_URL}
 
 | Parameter | Type   | Required | Description                    |
 |-----------|--------|----------|--------------------------------|
-| `url`     | string | Yes      | Full TikTok video URL          |
+| `url`     | string | Yes      |      TikTok video URL          |
 
 ## 🚀 Quick Start
 
