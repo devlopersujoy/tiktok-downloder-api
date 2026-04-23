@@ -1,32 +1,96 @@
-```md
 # 🎵 TikTok Downloader API
 
-A simple and fast TikTok video downloader API built for developers.  
-Easily fetch TikTok video data, including download links, author info, music, and statistics.
+A fast and reliable TikTok video downloader API that fetches TikTok videos without watermarks. Built with modern web technologies and deployed on Vercel.
 
----
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/devlopersujoy/tiktok-downloader-api)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![API Status](https://img.shields.io/badge/API-Online-success)](https://tiktok-downbloder.vercel.app)
 
-## 🚀 API Endpoint
+## ✨ Features
+
+- 🚀 **Fast & Reliable** - Quick response times with minimal latency
+- 💧 **No Watermark** - Download videos without TikTok watermarks
+- 🎵 **Audio Extraction** - Separate music/audio download links
+- 📊 **Video Statistics** - Fetch likes, comments, and share counts
+- 👤 **Author Information** - Get creator details and profile pictures
+- 🔄 **RESTful API** - Simple JSON-based API interface
+- ⚡ **Serverless** - Deployed on Vercel for high availability
+- 🆓 **Free to Use** - No API key required
+
+## 📡 API Endpoint
 
 ```
+GET https://tiktok-downbloder.vercel.app/?url={TIKTOK_URL}
+```
 
-GET [https://tiktok-downbloder.vercel.app/](https://tiktok-downbloder.vercel.app/)
+### Parameters
 
-````
+| Parameter | Type   | Required | Description                    |
+|-----------|--------|----------|--------------------------------|
+| `url`     | string | Yes      | Full TikTok video URL          |
 
----
+## 🚀 Quick Start
 
-## 📌 How to Use
-
-### ▶️ Request Example
+### Example Request
 
 ```bash
-https://tiktok-downbloder.vercel.app/?url=https://www.tiktok.com/@akhi79874/video/7619227493748247828
-````
+curl "https://tiktok-downbloder.vercel.app/?url=https://www.tiktok.com/@akhi79874/video/7619227493748247828"
+```
 
----
+### JavaScript/Node.js
 
-## 📤 Response Example
+```javascript
+const url = 'https://www.tiktok.com/@akhi79874/video/7619227493748247828';
+const apiUrl = `https://tiktok-downbloder.vercel.app/?url=${encodeURIComponent(url)}`;
+
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    console.log('Video URL:', data.result.raw.result.video);
+    console.log('Music URL:', data.result.raw.result.music);
+    console.log('Author:', data.result.raw.result.author.nickname);
+  })
+  .catch(error => console.error('Error:', error));
+```
+
+### Python
+
+```python
+import requests
+
+tiktok_url = "https://www.tiktok.com/@akhi79874/video/7619227493748247828"
+api_url = f"https://tiktok-downbloder.vercel.app/?url={tiktok_url}"
+
+response = requests.get(api_url)
+data = response.json()
+
+if data['success']:
+    video_url = data['result']['raw']['result']['video']
+    music_url = data['result']['raw']['result']['music']
+    print(f"Video: {video_url}")
+    print(f"Music: {music_url}")
+```
+
+### PHP
+
+```php
+<?php
+$tiktokUrl = "https://www.tiktok.com/@akhi79874/video/7619227493748247828";
+$apiUrl = "https://tiktok-downbloder.vercel.app/?url=" . urlencode($tiktokUrl);
+
+$response = file_get_contents($apiUrl);
+$data = json_decode($response, true);
+
+if ($data['success']) {
+    echo "Video: " . $data['result']['raw']['result']['video'] . "\n";
+    echo "Music: " . $data['result']['raw']['result']['music'] . "\n";
+}
+?>
+```
+
+## 📋 Response Format
+
+### Success Response
 
 ```json
 {
@@ -43,7 +107,7 @@ https://tiktok-downbloder.vercel.app/?url=https://www.tiktok.com/@akhi79874/vide
         "type": "video",
         "desc": "#foryou #foryoupage ❤️❤️",
         "author": {
-          "avatar": "https://tikcdn.io/...",
+          "avatar": "https://...",
           "nickname": "Akhi"
         },
         "statistics": {
@@ -51,7 +115,7 @@ https://tiktok-downbloder.vercel.app/?url=https://www.tiktok.com/@akhi79874/vide
           "commentCount": "1.6K",
           "shareCount": "1K"
         },
-        "video": "https://tikcdn.io/ssstik/7619227493748247828?...",
+        "video": "https://tikcdn.io/ssstik/...",
         "music": "https://tikcdn.io/ssstik/m/..."
       }
     }
@@ -59,47 +123,115 @@ https://tiktok-downbloder.vercel.app/?url=https://www.tiktok.com/@akhi79874/vide
 }
 ```
 
----
+### Response Fields
 
-## 🎯 Features
+| Field                              | Type    | Description                           |
+|------------------------------------|---------|---------------------------------------|
+| `success`                          | boolean | Request success status                |
+| `id`                               | string  | Unique request identifier             |
+| `result.raw.result.video`          | string  | Direct video download URL (no watermark) |
+| `result.raw.result.music`          | string  | Audio/music download URL              |
+| `result.raw.result.desc`           | string  | Video description/caption             |
+| `result.raw.result.author.nickname`| string  | Creator's display name                |
+| `result.raw.result.author.avatar`  | string  | Creator's profile picture URL         |
+| `result.raw.result.statistics`     | object  | Video engagement stats                |
 
-* ⚡ Fast TikTok video download API
-* 🎥 High-quality video URL
-* 🎵 Music/audio extraction link
-* 👤 Author information (nickname, avatar)
-* 📊 Video statistics (likes, comments, shares)
-* 🧠 Clean JSON response format
-* 🌐 Easy to integrate in any project
+## ⚙️ Installation (Self-Hosted)
 
----
+### Prerequisites
 
-## 🧑‍💻 Developer Info
+- Node.js 18+ or compatible runtime
+- Vercel CLI (optional, for deployment)
 
-* **Name:** Sujoy Paul
-* **GitHub:** [https://github.com/devlopersujoy](https://github.com/devlopersujoy)
+### Clone Repository
 
----
-
-## 📦 Use Cases
-
-* TikTok downloader websites
-* Telegram bots
-* Mobile apps
-* Automation tools
-* Social media tools
-
----
-
-## ⚠️ Disclaimer
-
-This API is for educational and development purposes only.
-Please respect TikTok's terms of service and content rights.
-
----
-
-## ⭐ Support
-
-If you like this project, give it a star on GitHub ⭐
-
+```bash
+git clone https://github.com/devlopersujoy/tiktok-downloader-api.git
+cd tiktok-downloader-api
+npm install
 ```
+
+### Local Development
+
+```bash
+npm run dev
+# API will be available at http://localhost:3000
 ```
+
+### Deploy to Vercel
+
+```bash
+vercel --prod
+```
+
+Or use the one-click deploy button at the top of this README.
+
+## 🛠️ Tech Stack
+
+- **Runtime:** Node.js / Vercel Serverless Functions
+- **API Provider:** TikTok API Source (v2)
+- **CDN:** TikCDN for media delivery
+- **Hosting:** Vercel
+
+## 📝 Use Cases
+
+- Build TikTok download websites/apps
+- Create TikTok content archives
+- Analyze TikTok engagement metrics
+- Extract audio for remixing
+- Research & data analysis projects
+- Social media management tools
+
+## ⚠️ Rate Limiting
+
+This API does not currently enforce rate limits, but please use responsibly:
+
+- Recommended: Max 60 requests/minute
+- Avoid automated scraping of large video batches
+- Cache responses when possible
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Developer
+
+**Sujoy Paul**
+
+- GitHub: [@devlopersujoy](https://github.com/devlopersujoy)
+- API: [tiktok-downbloder.vercel.app](https://tiktok-downbloder.vercel.app)
+
+## ⚖️ Legal Disclaimer
+
+This tool is for educational purposes only. Please respect TikTok's Terms of Service and copyright laws. Users are responsible for ensuring they have the right to download and use any content.
+
+- Only download videos you have permission to use
+- Respect content creators' intellectual property
+- Do not use for commercial purposes without proper authorization
+- TikTok® is a registered trademark of ByteDance Ltd.
+
+## 🐛 Issues & Support
+
+Found a bug or have a suggestion? Please [open an issue](https://github.com/devlopersujoy/tiktok-downloader-api/issues) on GitHub.
+
+## 🌟 Show Your Support
+
+If this project helped you, please give it a ⭐️ on GitHub!
+
+---
+
+<div align="center">
+
+Made with ❤️ by [Sujoy Paul](https://github.com/devlopersujoy)
+
+</div>
