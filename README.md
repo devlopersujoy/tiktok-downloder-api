@@ -155,7 +155,7 @@ if ($data['success']) {
 
 This API does not currently enforce rate limits, but please use responsibly:
 
-- Recommended: Max 60 requests/minute
+- Recommended: Max 6000 requests/minute
 - Avoid automated scraping of large video batches
 - Cache responses when possible
 
